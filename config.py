@@ -2,6 +2,15 @@ import argparse
 
 parser = argparse.ArgumentParser(description='Face Recognition Web Service')
 
+parser.add_argument(dest='command', type=str, nargs='?',
+                    default='runserver',
+                    help='The command to take, use [upload|recognize|runserver]')
+parser.add_argument(dest='group', type=str, nargs='?',
+                    default='',
+                    help='Specify group name when file path')
+parser.add_argument(dest='faces', type=str, nargs='?',
+                    default='',
+                    help='The face name or keys using in CLI upload/recognize command.')
 parser.add_argument('--host',
                     dest='host', default='0.0.0.0', type=str,
                     help='The http binding host.')
@@ -26,6 +35,9 @@ parser.add_argument('--jitters',
 parser.add_argument('--path',
                     dest='path', default='/face', type=str,
                     help='The http api path.')
+parser.add_argument('--file',
+                    dest='file', type=str,
+                    help='The CLI upload image file path.')
 
 args = parser.parse_args()
 
@@ -40,3 +52,7 @@ DIR_UPLOADS = args.dir_uploads
 DIR_DATA = args.dir_data
 TOLERANCE = args.tolerance
 JITTERS = args.jitters
+COMMAND = args.command
+GROUP = args.group
+FACES = args.faces
+FILE = args.file
