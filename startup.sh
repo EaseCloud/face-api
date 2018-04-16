@@ -4,4 +4,6 @@ set -e
 
 apt -y install cmake
 
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
+
+./main.py
