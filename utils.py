@@ -1,16 +1,10 @@
-import numpy
-from bottle import route, post, run, request, error, Response
-
-import imghdr
 import json
 import os
 import pickle
-import re
-import tempfile
 import sys
-import traceback
 
 import face_recognition
+from bottle import Response
 
 import config
 

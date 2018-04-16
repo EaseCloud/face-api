@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
+import os
 import re
 import sys
 
-import os
 from bottle import run
 
 import config
 import utils
-import views
 
 if __name__ == '__main__':
 
