@@ -7,8 +7,11 @@ from bottle import run
 
 import config
 import utils
+import views
 
 if __name__ == '__main__':
+
+    print(views and '', file=sys.stderr)
 
     if config.COMMAND == 'runserver':
         run(host='0.0.0.0', port=config.PORT)
