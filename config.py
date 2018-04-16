@@ -23,6 +23,9 @@ parser.add_argument('--jitters',
                     dest='jitters', default=1, type=int,
                     help='How many times to re-sample the face when calculating encoding. '
                          'Higher is more accurate, but slower (i.e. 100 is 100x slower)')
+parser.add_argument('--path',
+                    dest='path', default='/face', type=str,
+                    help='The http api path.')
 
 args = parser.parse_args()
 
@@ -32,6 +35,7 @@ for k, v in args.__dict__.items():
 # Redeclare
 HOST = args.host
 PORT = args.port
+PATH = args.path
 DIR_UPLOADS = args.dir_uploads
 DIR_DATA = args.dir_data
 TOLERANCE = args.tolerance

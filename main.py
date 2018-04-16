@@ -64,7 +64,7 @@ def error():
     ))
 
 
-@post(r'/upload/<group_id>/<face_id>')
+@post(os.path.join(r'/', config.PATH, r'upload/<group_id>/<face_id>')
 def upload(group_id, face_id):
     """ Upload a face to a specific group
     :param group_id: Group id, accepts characters from [0-9A-Za-z]
@@ -100,7 +100,7 @@ def upload(group_id, face_id):
     return make_response('Upload success: group_id={} face_id={}'.format(group_id, face_id))
 
 
-@post(r'/recognize/<group_id>')
+@post(os.path.join(r'/', config.PATH, r'recognize/<group_id>')
 def recognize(group_id):
     """ Recognize the faces in uploaded picture within the group repository.
     :param group_id: Group id, accepts characters from [0-9A-Za-z]
