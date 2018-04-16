@@ -61,9 +61,9 @@ def upload(group_id, face_id, path):
 
 
 def recognize(group_id, path, keys=None):
-    names, faces = zip(*(item for item
-                         in read_data(group_id).items()
-                         if not keys or item[0] in keys))
+    data = read_data(group_id)
+    names, faces = zip(*(item for item in data.items() if not keys or item[0] in keys)) \
+        if data else ((), ())
 
     # Parse the faces in the uploaded image
     image = face_recognition.load_image_file(path)
