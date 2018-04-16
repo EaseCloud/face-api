@@ -1,7 +1,7 @@
 Face Recognition Web Service
 ============================
 
-### Usage
+### Web API Usage
 
 #### 1. Upload a image with single face of <face_id> to the group <group_id>.
 
@@ -34,6 +34,7 @@ Method: POST
 Content-Type: multipart/form-data
 Payload:
   file=<Image File Object>
+  keys=Alice|Bob|Cathy  (Optional)
 ```
 
 ##### Response (Success)
@@ -54,4 +55,40 @@ Status: 400
 Content-Type: application/json
 Payload:
 {"ok":false,"msg":"<reason>"}
+```
+
+### CLI Usage:
+
+See `./main.py --help` form more information.
+
+#### 1. Run the server
+
+```
+./main.py runserver
+```
+
+Or ignore the default command name:
+
+```
+./main.py
+```
+
+#### 2. Upload a image with single face of <face_id> to the group <group_id>.
+
+```
+./main.py upload <group_id> <face_id> --file <image_path>
+```
+
+#### 3. Recognize the matching faces upload in the group <group_id>.
+
+Matches all the faces in the group.
+
+```
+./main.py recognize <group_id> --file <image_path>
+```
+
+Matches the faces with specific face names in the group.
+
+```
+./main.py recognize <group_id> [<face1>|<face2>|...] --file <image_path>
 ```
