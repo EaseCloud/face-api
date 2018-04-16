@@ -103,6 +103,9 @@ def upload(group_id, face_id):
 @post(os.path.join(r'/', config.PATH, r'recognize/<group_id>'))
 def recognize(group_id):
     """ Recognize the faces in uploaded picture within the group repository.
+    If POST[keys] given, split the data with '|' and get the keys.
+    Then only the face names in the keys list are considered, the others are ignored.
+    Otherwise, every face in the group would be considered.
     :param group_id: Group id, accepts characters from [0-9A-Za-z]
     :return:
     """
@@ -117,10 +120,12 @@ def recognize(group_id):
     file.save(path, overwrite=True)
 
     # Read faces in repository
-    data = read_data(group_id)
-    names = list(data.keys())
-    faces = numpy.array(list(data.values()))
-    # print(names, faces)
+    keys = set(request.POST.get('keys').split('|')) \
+        if request.POST.get('keys') else None
+
+    names, faces = zip(*(item for item
+                         in read_data(group_id).items()
+                         if not keys or item[0] in keys))
 
     # Parse the faces in the uploaded image
     image = face_recognition.load_image_file(path)
