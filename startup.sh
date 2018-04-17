@@ -6,4 +6,4 @@ apt -y install cmake
 
 python3 -m pip install -r requirements.txt
 
-./main.py
+./main.py --tolerance 0.6
