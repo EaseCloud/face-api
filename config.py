@@ -24,7 +24,7 @@ parser.add_argument('--dir-data',
                     dest='dir_data', default='data', type=str,
                     help='The face pattern data storage directory.')
 parser.add_argument('--tolerance',
-                    dest='tolerance', default=0.4, type=str,
+                    dest='tolerance', default=0.4, type=float,
                     help='How much distance between faces to consider it a match. '
                          'Specify float point value from 0 to 1. '
                          'Lower is more strict. 0.6 is typical best performance.')
